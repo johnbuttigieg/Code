@@ -15,7 +15,6 @@ def load_items():
 
 
 def list_items(data_lines):
-    #This loop prints each of the items that are out and the information associated with it. I use the count variable from the load item function to tell how many times it has to loop.
     count = 0
 
     #print out each of the lines in data lines are formats it accordingly. If its out then a star is printed at the end
