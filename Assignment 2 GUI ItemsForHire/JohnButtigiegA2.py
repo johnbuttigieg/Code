@@ -1,8 +1,16 @@
+__author__ = 'John Buttigieg'
 from kivy.uix.button import Button
 from kivy.properties import StringProperty
 from kivy.app import App
 from kivy.lang import Builder
 import csv
+
+### This program is incomplete but loads data from a csv file
+### and displays the data in buttons
+### new entries are able to be writting from the add new items popup
+### and is saved back into the csv file.
+
+###github URL: https://github.com/johnbuttigieg
 
 
 class Main(App):
