@@ -1,0 +1,92 @@
+BoxLayout:
+    id: mainBoxLayout
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            orientation: 'horizontal'
+            GridLayout:
+                cols: 1
+                orientation: 'vertical'
+                size_hint_x: 0.3
+                Button:
+                    id: view_button
+                    text: 'View Items'
+                    on_release: app.view()
+                Button:
+                    id: hire_button
+                    text: 'Hire Items'
+                    on_release: app.hire()
+                Button:
+                    id: return_button
+                    text: 'Return Items'
+                    # on_release: app.return()
+                Button:
+                    id: confirm_button
+                    text: 'Confirm'
+                    on_release: app.confirm()
+                Button:
+                    id: add_items_button
+                    text: 'Add Items'
+                    on_release: app.add_items()
+
+            GridLayout:
+                id: entryBox
+                cols: 2
+                orientation: 'vertical'
+        Label:
+            id: statusLabel
+            text: app.status_text
+            size_hint_y: 0.1
+    Popup:
+        id: addItems
+        title: "Add A New Item For hire"
+        on_parent:
+            if self.parent == mainBoxLayout: self.parent.remove_widget(self)
+        BoxLayout:
+            # layout for input fields and action buttons
+            id: inputs
+            orientation: 'vertical'
+            Label:
+                text: 'Item Name: '
+                size_hint_y: None
+                height: '48dp'
+            TextInput:
+                id: item_name
+                size_hint_y: None
+                value: ''
+                height: '48dp'
+                # the next two lines make it so that pressing Tab moves the cursor
+                # to the next input field instead of entering the Tab character
+                multiline: False
+                write_tab: False
+            Label:
+                text: 'Description: '
+                size_hint_y: None
+                height: '48dp'
+            TextInput:
+                id: item_description
+                size_hint_y: None
+                value: ''
+                height: '48dp'
+                # the next two lines make it so that pressing Tab moves the cursor
+                # to the next input field instead of entering the Tab character
+                multiline: False
+                write_tab: False
+            Label:
+                text: 'Price:'
+                size_hint_y: None
+                height: '48dp'
+            TextInput:
+                multiline: False
+                id: item_price
+                value: ''
+                size_hint_y: None
+                height: '48dp'
+            Button:
+                text: 'Save Item'
+                on_release: app.save_button(name_field.text, price_field.text, description_field.text)
+            Button:
+                text: 'Cancel'
+                on_release: app.cancel()
+            Label:
+                text: app.status_text
